@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-15T16:07:29+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">alphabet’s yap archive</title><entry><title type="html">An Experience With He Who Shall Not Be Named</title><link href="http://localhost:4000/2024/12/14/An-Experience-With-He-Who-Shall-Not-Be-Named.html" rel="alternate" type="text/html" title="An Experience With He Who Shall Not Be Named" /><published>2024-12-14T20:48:00+08:00</published><updated>2024-12-14T20:48:00+08:00</updated><id>http://localhost:4000/2024/12/14/An-Experience-With-He-Who-Shall-Not-Be-Named</id><content type="html" xml:base="http://localhost:4000/2024/12/14/An-Experience-With-He-Who-Shall-Not-Be-Named.html"><![CDATA[<p>Who cannot be named? Easy! She Who Shall Not Be Named! I dreaded her presence as from it followed dread and a longing for the remaining sands in the glass to finish. I entered an agreement–a contract–an exchange of my life for money. This is a contract established over and over and in every minute of the day, a very important contract one required to nourish yourself with food, electricity and small comforts.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-19T21:12:09+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">alphabet’s yap archive</title><entry><title type="html">Installing Nvidia drivers on PopOS</title><link href="http://localhost:4000/2025/01/19/Installing-Nvidia-Drivers.html" rel="alternate" type="text/html" title="Installing Nvidia drivers on PopOS" /><published>2025-01-19T20:58:00+08:00</published><updated>2025-01-19T20:58:00+08:00</updated><id>http://localhost:4000/2025/01/19/Installing-Nvidia-Drivers</id><content type="html" xml:base="http://localhost:4000/2025/01/19/Installing-Nvidia-Drivers.html"><![CDATA[<h1 id="installing-nvidia-drivers">Installing Nvidia drivers</h1>
+<p>The reason behind writing this is because I wanted a way to chronicle how to install it. This is specificall for Ubuntu based distros. But it is applicable to all which are supported.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></p>
+
+<p>Make sure that gcc is installed and collect system information with:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uname -m &amp;&amp; cat /etc/os-release
+</code></pre></div></div>
+
+<p>This information will be used to determine what you need to download.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install linux-headers-$(uname -r)
+</code></pre></div></div>
+
+<p>Install the proper headers. After that follow <a href="https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/#network-repo-installation-for-ubuntu">this</a> to install whatever is neccessary. Update and reboot the system.</p>
+
+<p>You’re then told to run the persistence daemon.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl start persistenced
+</code></pre></div></div>
+
+<p>The above command fails. Which is what tripped me up. I did some searching and found out that the service name is actually <code class="language-plaintext highlighter-rouge">nvidia-persistenced.service</code>. Making the command</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl status nvidia-persistenced.service
+</code></pre></div></div>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><a href="https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/#ubuntu-installation-local">A full list of supported distros</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[Installing Nvidia drivers The reason behind writing this is because I wanted a way to chronicle how to install it. This is specificall for Ubuntu based distros. But it is applicable to all which are supported.1 A full list of supported distros &#8617;]]></summary></entry><entry><title type="html">An Experience With She Who Shall Not Be Named</title><link href="http://localhost:4000/2024/12/14/An-Experience-With-She-Who-Shall-Not-Be-Named.html" rel="alternate" type="text/html" title="An Experience With She Who Shall Not Be Named" /><published>2024-12-14T20:48:00+08:00</published><updated>2024-12-14T20:48:00+08:00</updated><id>http://localhost:4000/2024/12/14/An-Experience-With-She-Who-Shall-Not-Be-Named</id><content type="html" xml:base="http://localhost:4000/2024/12/14/An-Experience-With-She-Who-Shall-Not-Be-Named.html"><![CDATA[<p>Who cannot be named? Easy! She Who Shall Not Be Named! I dreaded her presence as from it followed dread and a longing for the remaining sands in the glass to finish. I entered an agreement–a contract–an exchange of my life for money. This is a contract established over and over and in every minute of the day, a very important contract one required to nourish yourself with food, electricity and small comforts.</p>
 
 <p>However, as I am a student, in bondage of an institution of education. This contract was made under their request, my life is not <em>just</em> life for money but experience as well! At a previous exchange under a similar contract roughly one winter ago, there was yet another She Who Shall Not Be Named. Let’s refer to him as He Who Shan’t Focus On You. He Who Shan’t Focus On You expected lots of me. Well, She Who Shall Not Be Named did as well.</p>
 
