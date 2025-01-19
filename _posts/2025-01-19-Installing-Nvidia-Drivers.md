@@ -4,7 +4,6 @@ title: 'Installing Nvidia drivers on PopOS'
 date: 2025-01-19 20:58
 ---
 
-# Installing Nvidia drivers
 The reason behind writing this is because I wanted a way to chronicle how to install it. This is specificall for Ubuntu based distros. But it is applicable to all which are supported.[^1]
 
 Make sure that gcc is installed and collect system information with:
