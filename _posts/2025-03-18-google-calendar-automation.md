@@ -140,7 +140,7 @@ Then I wait 30 seconds and then it appears in my calendar.
 
 I setup a cronjob and this is `calendar.fish`.
 
-```
+```fish
 #!/bin/fish
 
 cd /home/star/Documents/Projects

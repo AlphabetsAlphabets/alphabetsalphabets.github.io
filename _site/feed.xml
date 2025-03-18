@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-18T09:10:51+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">alphabet’s yap archive</title><entry><title type="html">Google Calendar Automation</title><link href="http://localhost:4000/2025/03/18/google-calendar-automation.html" rel="alternate" type="text/html" title="Google Calendar Automation" /><published>2025-03-18T08:46:00+08:00</published><updated>2025-03-18T08:46:00+08:00</updated><id>http://localhost:4000/2025/03/18/google-calendar-automation</id><content type="html" xml:base="http://localhost:4000/2025/03/18/google-calendar-automation.html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-18T11:32:12+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">alphabet’s yap archive</title><entry><title type="html">Google Calendar Automation</title><link href="http://localhost:4000/2025/03/18/google-calendar-automation.html" rel="alternate" type="text/html" title="Google Calendar Automation" /><published>2025-03-18T08:46:00+08:00</published><updated>2025-03-18T08:46:00+08:00</updated><id>http://localhost:4000/2025/03/18/google-calendar-automation</id><content type="html" xml:base="http://localhost:4000/2025/03/18/google-calendar-automation.html"><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>Why did I want to do this? My school has an app which contains calendar information.
 But, the school’s app does many things like checking your results,
 your credits (used to purchase items at school), and other things.
@@ -132,12 +132,12 @@ is in the google calendar, I discard it. Otherwise, I store it in a list. Then I
 
 <p>I setup a cronjob and this is <code class="language-plaintext highlighter-rouge">calendar.fish</code>.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/fish
+<pre><code class="language-fish">#!/bin/fish
 
 cd /home/star/Documents/Projects
 source .venv/bin/activate.fish
 python3 main.py
-</code></pre></div></div>
+</code></pre>
 
 <p>So it will run at 8pm every friday.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Introduction Why did I want to do this? My school has an app which contains calendar information. But, the school’s app does many things like checking your results, your credits (used to purchase items at school), and other things. But I mainly use the application to check my calendar. It’s actually quite simple, but it only took me weeks because I refused to search for stuff and guessed by way through things.]]></summary></entry><entry><title type="html">Completions in Neovim</title><link href="http://localhost:4000/2024/02/16/completions-in-neovim.html" rel="alternate" type="text/html" title="Completions in Neovim" /><published>2024-02-16T23:00:00+08:00</published><updated>2024-02-16T23:00:00+08:00</updated><id>http://localhost:4000/2024/02/16/completions-in-neovim</id><content type="html" xml:base="http://localhost:4000/2024/02/16/completions-in-neovim.html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>I decided to learn about this because why not. I remember one time I heard about omnifunc and that it’s vim’s built in completion. And I decided to give it a try because why not. It ended up being a pretty good experience. I also plan to use tags for navigation and code completion for a few weeks just to get a feel for this vs LSP. It will definitely be an interesting exercise and definitely one that’s gonna be fun. It’s also how people used to code pre-LSP.</p>
