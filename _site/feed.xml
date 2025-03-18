@@ -1,55 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-19T21:12:09+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">alphabet’s yap archive</title><entry><title type="html">Installing Nvidia drivers on PopOS</title><link href="http://localhost:4000/2025/01/19/Installing-Nvidia-Drivers.html" rel="alternate" type="text/html" title="Installing Nvidia drivers on PopOS" /><published>2025-01-19T20:58:00+08:00</published><updated>2025-01-19T20:58:00+08:00</updated><id>http://localhost:4000/2025/01/19/Installing-Nvidia-Drivers</id><content type="html" xml:base="http://localhost:4000/2025/01/19/Installing-Nvidia-Drivers.html"><![CDATA[<h1 id="installing-nvidia-drivers">Installing Nvidia drivers</h1>
-<p>The reason behind writing this is because I wanted a way to chronicle how to install it. This is specificall for Ubuntu based distros. But it is applicable to all which are supported.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-18T09:10:51+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">alphabet’s yap archive</title><entry><title type="html">Google Calendar Automation</title><link href="http://localhost:4000/2025/03/18/google-calendar-automation.html" rel="alternate" type="text/html" title="Google Calendar Automation" /><published>2025-03-18T08:46:00+08:00</published><updated>2025-03-18T08:46:00+08:00</updated><id>http://localhost:4000/2025/03/18/google-calendar-automation</id><content type="html" xml:base="http://localhost:4000/2025/03/18/google-calendar-automation.html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<p>Why did I want to do this? My school has an app which contains calendar information.
+But, the school’s app does many things like checking your results,
+your credits (used to purchase items at school), and other things.
+But I mainly use the application to check my calendar. It’s actually quite simple,
+but it only took me weeks because I refused to search for stuff and guessed by way
+through things.</p>
 
-<p>Make sure that gcc is installed and collect system information with:</p>
+<h1 id="scouting">Scouting</h1>
+<p>While messing around in my school’s student login, and messing around in the student page.
+I noticed that the browser receives a JSON request literally called “classes”. So, I was like
+“nice.” I quickly whipped up a Python script and a request to inspect the JSON. It was pretty well
+structured.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uname -m &amp;&amp; cat /etc/os-release
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "MODULE_NAME": "Basic Finance",
+  "DAY": "MON",
+  "LOCATION": "XXX",
+  "TIME_FROM_ISO": "2025-03-10T08:30:00+08:00",
+  "TIME_TO_ISO": "2025-03-10T10:30:00+08:00",
+  "GROUPING": "G1",
+  "CLASS_CODE": "SAFI___AAQS006-3-C-BF-L-1___2025-01-08",
+  "COLOR": "yellow"
+}
 </code></pre></div></div>
 
-<p>This information will be used to determine what you need to download.</p>
+<p>This is heavily modified to preserve privacy. It was super good, and well structured.
+So I searched for the google calendar API and was again like “Nice :)”</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install linux-headers-$(uname -r)
+<h1 id="pulling-data-from-the-api">Pulling data from the API</h1>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_timetable</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">timetable_endpoint</span><span class="p">)</span>
+    <span class="n">timetables</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="n">my_classes</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">session</span><span class="p">:</span> <span class="n">session</span><span class="p">[</span><span class="s">"INTAKE"</span><span class="p">]</span> <span class="o">==</span> <span class="o">&lt;</span><span class="n">INTAKE</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">timetables</span><span class="p">)</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s">"MODULE_NAME"</span><span class="p">,</span> <span class="s">"TIME_FROM_ISO"</span><span class="p">,</span> <span class="s">"TIME_TO_ISO"</span><span class="p">,</span> <span class="s">"MODID"</span><span class="p">,</span> <span class="s">"ROOM"</span><span class="p">]</span>
+    <span class="n">my_classes</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">class_</span><span class="p">:</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">class_</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">},</span> <span class="n">my_classes</span><span class="p">)</span>
+
+    <span class="n">filtered_classes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">details</span> <span class="ow">in</span> <span class="n">my_classes</span><span class="p">:</span>
+        <span class="n">module_name</span> <span class="o">=</span> <span class="n">details</span><span class="p">[</span><span class="s">'MODULE_NAME'</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">module_name</span><span class="si">}</span><span class="s"> @ </span><span class="si">{</span><span class="n">details</span><span class="p">[</span><span class="s">'ROOM'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">details</span><span class="p">[</span><span class="s">"TIME_FROM_ISO"</span><span class="p">]</span>
+        <span class="c1"># If the class date is less than now, ignore it.
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_class_after_now</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+            <span class="c1"># Make sure events are in the future
+</span>            <span class="k">continue</span>
+        <span class="k">elif</span> <span class="n">module_name</span> <span class="o">==</span> <span class="s">"Image Processing, Computer Vision and Pattern Recognition"</span><span class="p">:</span>
+            <span class="c1"># I'm not taking this
+</span>            <span class="k">continue</span>
+
+        <span class="n">description</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"Module code: </span><span class="si">{</span><span class="n">details</span><span class="p">[</span><span class="s">'MODID'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"summary"</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+            <span class="s">"description"</span><span class="p">:</span> <span class="n">description</span><span class="p">,</span>
+            <span class="s">"start"</span><span class="p">:</span> <span class="p">{</span><span class="s">"dateTime"</span><span class="p">:</span> <span class="n">start</span><span class="p">},</span>
+            <span class="s">"end"</span><span class="p">:</span> <span class="p">{</span><span class="s">"dateTime"</span><span class="p">:</span> <span class="n">details</span><span class="p">[</span><span class="s">"TIME_TO_ISO"</span><span class="p">]}</span>
+        <span class="p">}</span>
+        <span class="n">filtered_classes</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filtered_classes</span>
 </code></pre></div></div>
 
-<p>Install the proper headers. After that follow <a href="https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/#network-repo-installation-for-ubuntu">this</a> to install whatever is neccessary. Update and reboot the system.</p>
+<p>This is pretty straightforward. I make a request then filter through the JSON and produce my own JSON.
+I make sure the intake is mine because the JSON request has classes for <em>every</em> single intake. I also
+had to make sure the class was in the future so there’s just less stuff to filter.</p>
 
-<p>You’re then told to run the persistence daemon.</p>
+<h1 id="getting-data-from-google-calendar">Getting data from google calendar</h1>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl start persistenced
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_existing_classes</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">calendar_id</span><span class="p">,</span> <span class="n">my_classes</span><span class="p">):</span>
+    <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">detail</span><span class="p">[</span><span class="s">"summary"</span><span class="p">]</span> <span class="k">for</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">my_classes</span><span class="p">]</span>
+
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="o">&lt;</span><span class="n">location</span><span class="o">&gt;</span><span class="p">))</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">now</span><span class="p">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+    <span class="n">all_events</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="nb">list</span><span class="p">(</span>
+        <span class="n">calendarId</span><span class="o">=</span><span class="n">calendar_id</span><span class="p">[</span><span class="s">"id"</span><span class="p">],</span>
+        <span class="n">timeMin</span><span class="o">=</span><span class="n">now</span><span class="p">,</span>
+        <span class="n">timeZone</span><span class="o">=</span><span class="s">"UTC"</span>
+    <span class="p">).</span><span class="n">execute</span><span class="p">()</span>
+
+    <span class="n">all_events</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">events</span><span class="p">:</span> <span class="n">events</span><span class="p">,</span> <span class="n">all_events</span><span class="p">[</span><span class="s">"items"</span><span class="p">])</span>
+    <span class="n">all_events</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">events</span><span class="p">:</span> <span class="s">"summary"</span> <span class="ow">in</span> <span class="n">events</span> <span class="ow">and</span> <span class="s">"dateTime"</span> <span class="ow">in</span> <span class="n">events</span><span class="p">[</span><span class="s">"start"</span><span class="p">],</span> <span class="n">all_events</span><span class="p">)</span>
+    <span class="n">all_events</span> <span class="o">=</span> <span class="p">{</span><span class="n">events</span><span class="p">[</span><span class="s">"summary"</span><span class="p">]:</span> <span class="n">events</span><span class="p">[</span><span class="s">"start"</span><span class="p">][</span><span class="s">"dateTime"</span><span class="p">]</span> <span class="k">for</span> <span class="n">events</span> <span class="ow">in</span> <span class="n">all_events</span> <span class="k">if</span> <span class="n">events</span><span class="p">[</span><span class="s">"summary"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">class_names</span><span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">all_events</span>
 </code></pre></div></div>
 
-<p>The above command fails. Which is what tripped me up. I did some searching and found out that the service name is actually <code class="language-plaintext highlighter-rouge">nvidia-persistenced.service</code>. Making the command</p>
+<p>The part I struggled with was here.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">calendarId</code> - Takes in an ID of your calendar and will pull events only from that calendar.</li>
+</ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl status nvidia-persistenced.service
+<p>In this case, the calendar named “School” to only pull classes.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">timeMin</code> - Takes all events startin from the specified time.</li>
+</ul>
+
+<p>This is where I struggled because before I discovered <code class="language-plaintext highlighter-rouge">timeMin</code> was that I couldn’t get all of my events
+from the calendar I specified. This was because the total number of events collected is fixed. Setting <code class="language-plaintext highlighter-rouge">timeMin</code>
+fixes the issue.</p>
+
+<p>This is to get all classes, which helps to prevent duplicate rescheduling.</p>
+
+<h1 id="scheduling-the-events">Scheduling the events</h1>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">unscheduled_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_class</span> <span class="k">for</span> <span class="n">my_class</span> <span class="ow">in</span> <span class="n">my_classes</span> <span class="k">if</span> <span class="n">my_class</span><span class="p">[</span><span class="s">"summary"</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">existing_classes</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unscheduled_classes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Nothing to schedule."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">schedule_classes</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">unscheduled_classes</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1" role="doc-endnote">
-      <p><a href="https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/#ubuntu-installation-local">A full list of supported distros</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name></name></author><summary type="html"><![CDATA[Installing Nvidia drivers The reason behind writing this is because I wanted a way to chronicle how to install it. This is specificall for Ubuntu based distros. But it is applicable to all which are supported.1 A full list of supported distros &#8617;]]></summary></entry><entry><title type="html">An Experience With She Who Shall Not Be Named</title><link href="http://localhost:4000/2024/12/14/An-Experience-With-She-Who-Shall-Not-Be-Named.html" rel="alternate" type="text/html" title="An Experience With She Who Shall Not Be Named" /><published>2024-12-14T20:48:00+08:00</published><updated>2024-12-14T20:48:00+08:00</updated><id>http://localhost:4000/2024/12/14/An-Experience-With-She-Who-Shall-Not-Be-Named</id><content type="html" xml:base="http://localhost:4000/2024/12/14/An-Experience-With-She-Who-Shall-Not-Be-Named.html"><![CDATA[<p>Who cannot be named? Easy! She Who Shall Not Be Named! I dreaded her presence as from it followed dread and a longing for the remaining sands in the glass to finish. I entered an agreement–a contract–an exchange of my life for money. This is a contract established over and over and in every minute of the day, a very important contract one required to nourish yourself with food, electricity and small comforts.</p>
+<p>Here the timetable from the school, plus the existing classes from the calendar. I just
+make sure there are no duplicates by making sure that if the classes from the school timetable
+is in the google calendar, I discard it. Otherwise, I store it in a list. Then I call <code class="language-plaintext highlighter-rouge">schedule_classes</code>.</p>
 
-<p>However, as I am a student, in bondage of an institution of education. This contract was made under their request, my life is not <em>just</em> life for money but experience as well! At a previous exchange under a similar contract roughly one winter ago, there was yet another She Who Shall Not Be Named. Let’s refer to him as He Who Shan’t Focus On You. He Who Shan’t Focus On You expected lots of me. Well, She Who Shall Not Be Named did as well.</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">schedule_classes</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">classes_to_schedule</span><span class="p">):</span>
+    <span class="n">calendar_address</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">address</span><span class="o">&gt;</span>
 
-<p>But was a lot more tough on me as He Who Shan’t Focus On You transferred me to a different department so my work changed. However, She Who Shall Not Be Named did not have that luxury because there was no sub-division of the information technology department. In addition, the current assignment provided unto me was deemed to be more important than anything else. Furthermore, She Who Shall Not Be Named is a one man army, in a small sized corporation.</p>
+    <span class="k">for</span> <span class="n">details</span> <span class="ow">in</span> <span class="n">my_classes</span><span class="p">:</span>
+        <span class="c1"># Make sure it isn't scheduled already to avoid repeats
+</span>        <span class="n">event</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">calendarId</span><span class="o">=</span><span class="n">calendar_address</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">details</span><span class="p">).</span><span class="n">execute</span><span class="p">()</span>
+</code></pre></div></div>
 
-<p>As a (positive) consequence there was no one else who could be given assignments. Which meant that I learned an incredible amount about hardware, server management, computer maintenance/upkeep, and a lot more. The negative consequence is that there was no one else to turn to when I had queries. She Who Shall Not Be Named was decidedly not fond of when I prompted her with a query. Often appending his helpful advice with a jab, “No more stupid questions.” Or she would prepend them.</p>
+<p>Then I wait 30 seconds and then it appears in my calendar.</p>
 
-<p>The sands of the hourglass were falling oh, so, slowly. Four months worth to be exact. While the sands fell, it was not easy. The day by day experience was grueling, tough. I am not the fastest learner, and I’m an even slower “applicator” if that even makes sense. Basically, I’m not good at applying the theory I’ve only read about.</p>
+<h1 id="automating">Automating</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 20 * * 6 ~/Documents/Scripts/calendar.fish
+</code></pre></div></div>
 
-<blockquote>
-  <p>I can’t keep up with the fancy dialogue it is very tiring. Basically what I said was it was an internship and this supervisor of mine made things difficult.</p>
-</blockquote>
+<p>I setup a cronjob and this is <code class="language-plaintext highlighter-rouge">calendar.fish</code>.</p>
 
-<p>Anyways, he expected me to know pretty much everything. I was never big into hardware but had an interest which I never explored. I pretty much focused exclusively on software. I didn’t even know what an NVME was until a few months ago, let alone see one. I did not know it was basically a storage device. There was a laptop that was unable to start, a staff laptop, I assumed that it was because there was no storage device and therefore no OS. She told me to look again and I said it wasn’t there.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/fish
 
-<p>When she took a closer look, she pointed it out and said, “Is it possible for you to solve a problem without me?” Before sighing, shaking her head and walking away. Turns out the problem was the lack of an OS, it was an issue with the RAM. So, I picked up some from a storage area and it was fixed. This made me angry. I did not know what an NVME was which meant that even if I saw it, it meant nothing.</p>
+cd /home/star/Documents/Projects
+source .venv/bin/activate.fish
+python3 main.py
+</code></pre></div></div>
 
-<p>She preferred a hands off approach. “Please, try harder. I do not want to understand, I do not know what your problem is, and I frankly, do not care.” These were her colorful words she sprayed at me when I asked her a question. Perhaps her definition of colorful is jet black. When I performed troubleshooting, I would exhaust all my options that I know and try stuff from research I found online. She would ask for what I tried, and helpfully say some incredibly unhelpful anecdote about how I should solve my problem which she deems as helpful but was useless nonetheless.</p>
-
-<p>On the occasion that her suggestions were things I have already tried, she would again, very helpfully say words filled to the brim with the spirit of encouragement. Which would fuel me as I once again delve into the archive of the internet. As I mined and mined for the solution: “Try harder.” Truly inspiring! While the experience has been undeniably practical as I have come to learn a lot, she was not a wonderful supervisor.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Who cannot be named? Easy! She Who Shall Not Be Named! I dreaded her presence as from it followed dread and a longing for the remaining sands in the glass to finish. I entered an agreement–a contract–an exchange of my life for money. This is a contract established over and over and in every minute of the day, a very important contract one required to nourish yourself with food, electricity and small comforts.]]></summary></entry><entry><title type="html">Completions in Neovim</title><link href="http://localhost:4000/2024/02/16/completions-in-neovim.html" rel="alternate" type="text/html" title="Completions in Neovim" /><published>2024-02-16T23:00:00+08:00</published><updated>2024-02-16T23:00:00+08:00</updated><id>http://localhost:4000/2024/02/16/completions-in-neovim</id><content type="html" xml:base="http://localhost:4000/2024/02/16/completions-in-neovim.html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>So it will run at 8pm every friday.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Introduction Why did I want to do this? My school has an app which contains calendar information. But, the school’s app does many things like checking your results, your credits (used to purchase items at school), and other things. But I mainly use the application to check my calendar. It’s actually quite simple, but it only took me weeks because I refused to search for stuff and guessed by way through things.]]></summary></entry><entry><title type="html">Completions in Neovim</title><link href="http://localhost:4000/2024/02/16/completions-in-neovim.html" rel="alternate" type="text/html" title="Completions in Neovim" /><published>2024-02-16T23:00:00+08:00</published><updated>2024-02-16T23:00:00+08:00</updated><id>http://localhost:4000/2024/02/16/completions-in-neovim</id><content type="html" xml:base="http://localhost:4000/2024/02/16/completions-in-neovim.html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>I decided to learn about this because why not. I remember one time I heard about omnifunc and that it’s vim’s built in completion. And I decided to give it a try because why not. It ended up being a pretty good experience. I also plan to use tags for navigation and code completion for a few weeks just to get a feel for this vs LSP. It will definitely be an interesting exercise and definitely one that’s gonna be fun. It’s also how people used to code pre-LSP.</p>
 
 <h2 id="what-are-completions">What are completions?</h2>
