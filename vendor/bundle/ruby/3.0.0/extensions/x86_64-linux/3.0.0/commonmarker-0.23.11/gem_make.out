@@ -1,11 +1,11 @@
-current directory: /home/star/Documents/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
-/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20241214-17542-rwwxun.rb extconf.rb
+current directory: /home/star/Documents/Projects/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20250320-18721-eghtqq.rb extconf.rb
 creating Makefile
 
-current directory: /home/star/Documents/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
+current directory: /home/star/Documents/Projects/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
 make DESTDIR\= clean
 
-current directory: /home/star/Documents/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
+current directory: /home/star/Documents/Projects/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
 make DESTDIR\=
 compiling arena.c
 compiling autolink.c
@@ -62,6 +62,6 @@ compiling utf8.c
 compiling xml.c
 linking shared-object commonmarker/commonmarker.so
 
-current directory: /home/star/Documents/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
+current directory: /home/star/Documents/Projects/blog/vendor/bundle/ruby/3.0.0/gems/commonmarker-0.23.11/ext/commonmarker
 make DESTDIR\= install
-/usr/bin/install -c -m 0755 commonmarker.so ./.gem.20241214-17542-cvrs1/commonmarker
+/usr/bin/install -c -m 0755 commonmarker.so ./.gem.20250320-18721-m51r1i/commonmarker
