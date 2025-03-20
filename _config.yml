@@ -1,16 +1,13 @@
-title: alphabet's yap archive
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-
-theme_config:
-  appearance: "light" # can be "light", "dark" or "auto"
-  back_home_text: ".." # customize text for homepage link in post layout
-  date_format: "%Y-%m-%d" # customize how date is formatted
-  show_description: false # show blog description in home page
+title: AlphabetsAlphabets' Blog
+email: yapjiahong-p@proton.me
+description: >-
+  For sharing my use cases, and stuff I create that helps myself. 
+baseurl: ""
+url: ""
+github_username: AlphabetsAlphabets
 
 # Build settings
 markdown: kramdown
-remote_theme: riggraz/no-style-please
-# theme: no-style-please
+theme: minima
 plugins:
   - jekyll-feed
