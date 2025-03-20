@@ -14,7 +14,7 @@ I have experience in developing:
 3. Mobile applications
 4. Desktop applications
 
-For a full list of projects take a look at my [GitHub](https://github.com/AlphabetsAlphabets). My CV is also available [here]().
+For a full list of projects take a look at my [GitHub](https://github.com/AlphabetsAlphabets). My CV is also available [here](https://github.com/AlphabetsAlphabets/alphabetsalphabets.github.io/blob/gh-pages/2025%20March%2020.pdf).
 
 # Copywriter
 
