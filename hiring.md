@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Services
-permalink: /services/
+title: Hiring
+permalink: /hiring/
 ---
 
 I am open to hire for comissions or freelance! Here is what I can do.
@@ -14,7 +14,7 @@ I have experience in developing:
 3. Mobile applications
 4. Desktop applications
 
-For a full list of projects take a look at my [GitHub](https://github.com/AlphabetsAlphabets). My CV is also available [here](https://github.com/AlphabetsAlphabets/alphabetsalphabets.github.io/blob/gh-pages/2025%20March%2020.pdf).
+For a full list of projects take a look at my [GitHub](https://github.com/AlphabetsAlphabets). My CV is also available [here](https://drive.google.com/file/d/1tAa9nSyL5Mog6oP0rPCetuMlOljoX3QX/view?usp=sharing).
 
 # Copywriter
 
