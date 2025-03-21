@@ -19,7 +19,7 @@ For a full list of projects take a look at my [GitHub](https://github.com/Alphab
 # Copywriter
 
 I can write on a variety of content. Such as:
-1. Technology - As someone who maintains a tech blog, I will always do my best to convey technical information so that the layperson can understand it. My more "step-by-step" style content is found on my [Medium](https://medium.com/@yapjiahong2003).
+1. Technology - As someone who maintains a tech blog, I will always do my best to convey technical information so that the layperson can understand it. This blog is meant for more experienced techies. My more guided content can be found in my [Medium](https://medium.com/@yapjiahong2003) or [Hashnode](alphabetsalphabets.hashnode.dev)
 
 2. Health - I run and manage an Instagram account on Health and Wellness.
 
