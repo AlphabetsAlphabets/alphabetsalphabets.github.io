@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-21T20:36:38+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">AlphabetsAlphabets’ Blog</title><subtitle>For sharing my use cases, and stuff I create that helps myself. </subtitle><entry><title type="html">Google Calendar Automation</title><link href="http://localhost:4000/2025/03/18/Google-Calendar-Automation.html" rel="alternate" type="text/html" title="Google Calendar Automation" /><published>2025-03-18T08:46:00+08:00</published><updated>2025-03-18T08:46:00+08:00</updated><id>http://localhost:4000/2025/03/18/Google-Calendar-Automation</id><content type="html" xml:base="http://localhost:4000/2025/03/18/Google-Calendar-Automation.html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-23T13:27:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">AlphabetsAlphabets’ Blog</title><subtitle>For sharing my use cases, and stuff I create that helps myself. </subtitle><entry><title type="html">How I cross post to Hashnode and Medium from GitHub.</title><link href="http://localhost:4000/2025/03/23/Blog-Post-Automation.html" rel="alternate" type="text/html" title="How I cross post to Hashnode and Medium from GitHub." /><published>2025-03-23T12:27:00+08:00</published><updated>2025-03-23T12:27:00+08:00</updated><id>http://localhost:4000/2025/03/23/Blog-Post-Automation</id><content type="html" xml:base="http://localhost:4000/2025/03/23/Blog-Post-Automation.html"><![CDATA[<h1 id="hello">Hello</h1>]]></content><author><name></name></author><summary type="html"><![CDATA[Hello]]></summary></entry><entry><title type="html">Why are ARM CPUs suddenly so popular? What even is it?</title><link href="http://localhost:4000/2025/03/21/What-is-an-ARM-CPU-What-Even-Is-ARM.html" rel="alternate" type="text/html" title="Why are ARM CPUs suddenly so popular? What even is it?" /><published>2025-03-21T20:46:00+08:00</published><updated>2025-03-21T20:46:00+08:00</updated><id>http://localhost:4000/2025/03/21/What-is-an-ARM-CPU-What-Even-Is-ARM</id><content type="html" xml:base="http://localhost:4000/2025/03/21/What-is-an-ARM-CPU-What-Even-Is-ARM.html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<p>The sudden rise of ARM based CPUs has resulted in manufacturers</p>
+
+<p>Why are so many manufacturers producing ARM based CPUs. What’s with the sudden rise in it’s popularity. Do you even know what it means for a CPU to be ARM based? If you don’t, fret not. I will gladly tell you everything about it.</p>
+
+<p>In recently times, since the debut of Apple Silicon in 2020.</p>
+
+<h1 id="what-is-arm">What is ARM?</h1>
+<p>ARM is an <strong>architecture</strong> and CPUs that are “ARM based” are built using ARM. You may have heard of the terms “64-bit application” or “32-bit application”. What it means that an application will work on 64-bit or 32-bit CPUs respectively. There have been many different types of CPUs throughout the years and they support different applications.</p>
+<ul>
+  <li>x86 CPU supports 32 bit applications</li>
+  <li>x64 CPU supports 64 bit applications</li>
+  <li>x86-64 supports 64 and 32 bit applications.</li>
+</ul>
+
+<p>The architectures listed above are part of a group of CPU architectures called “<strong>CISC</strong>” which stands for “Complex Instruction Set Computer”. While ARM is part of the “<strong>RISC</strong>” family which stands for “Reduced Instruction Set Computing”.</p>
+
+<h1 id="pros-and-cons-of-an-arm-based-cpu">Pros and cons of an ARM based CPU</h1>
+<p>The primary benefit a consumer (end-user) gets is battery life. The latest ARM CPUs (at time of writing) include Apple’s M series and Qualcomm’s Snapdragon. The Macbook Air M4 for example boasts a battery life of 18 hours, the ASUS Zenbook A14 lasts for 32 hours. These two laptops have an ARM based CPU.</p>
+
+<p>Modern CPUs built with an ARM architecture would mean powerful PCs with crazy good battery life. So, what gives? Why aren’t there more ARM based devices?</p>
+
+<blockquote>
+  <p>Here’s some extra fun facts! There are more ARM based devices that you’d expect. ARM is very prevalent in the mobile industry. Android and apple phones both have an ARM CPU running in them, right now. The Nintendo’s gameboy advanced, Microsoft’s Surface laptops are also running on an ARM CPU.</p>
+</blockquote>
+
+<p>For the more astute readers, you may have surmised that an x64-64 application will <strong>not</strong> work on ARM CPUs, and you’re aboslutely right! This is a really big deal. It doesn’t matter how good the hardware is if there is no software support.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Introduction The sudden rise of ARM based CPUs has resulted in manufacturers]]></summary></entry><entry><title type="html">Google Calendar Automation</title><link href="http://localhost:4000/2025/03/18/Google-Calendar-Automation.html" rel="alternate" type="text/html" title="Google Calendar Automation" /><published>2025-03-18T08:46:00+08:00</published><updated>2025-03-18T08:46:00+08:00</updated><id>http://localhost:4000/2025/03/18/Google-Calendar-Automation</id><content type="html" xml:base="http://localhost:4000/2025/03/18/Google-Calendar-Automation.html"><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>Why did I want to do this? My school has an app which contains calendar information.
 But, the school’s app does many things like checking your results,
 your credits (used to purchase items at school), and other things.
